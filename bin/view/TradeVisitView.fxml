@@ -10,31 +10,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: ;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TradeVisitController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: ;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TradeVisitController">
    <children>
       <JFXHamburger fx:id="hbMenu" layoutX="886.0" layoutY="14.0" />
       <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" layoutX="-8.0" prefHeight="540.0" prefWidth="200.0" AnchorPane.leftAnchor="-8.0" />
-      <JFXButton fx:id="btSearch" buttonType="RAISED" layoutX="741.0" layoutY="99.0" onAction="#lauchAnalysis" prefHeight="19.0" prefWidth="95.0" style="-fx-background-color: FEDD00;" text="Search">
+      <JFXButton fx:id="btSearch" buttonType="RAISED" layoutX="741.0" layoutY="99.0" onAction="#lauchAnalysis" prefHeight="19.0" prefWidth="95.0" style="-fx-background-color: FEDD00;" text="Rechercher">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Label layoutX="446.0" layoutY="24.0" text="Trade Visits">
+      <Label layoutX="446.0" layoutY="24.0" text="Suivi des visites">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
       <JFXComboBox fx:id="cbArea" focusColor="#fedd00" layoutX="503.0" layoutY="101.0" prefHeight="25.0" prefWidth="200.0" />
-      <Label layoutX="392.0" layoutY="105.0" text="Concerned Area:">
+      <Label layoutX="392.0" layoutY="105.0" text="Zone concernée">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="tbResults" layoutX="168.0" layoutY="281.0" prefHeight="259.0" prefWidth="767.0">
+      <TableView fx:id="tbResults" layoutX="197.0" layoutY="281.0" prefHeight="259.0" prefWidth="767.0">
         <columns>
-          <TableColumn fx:id="clSalesRepId" prefWidth="248.0" text="Sales Representant ID" />
-          <TableColumn fx:id="clSalesRepLastName" prefWidth="246.0" text="Sales Representant Last Name" />
-            <TableColumn fx:id="clNumberVisits" prefWidth="272.0" text="Trade Visits Done" />
+          <TableColumn fx:id="clSalesRepId" prefWidth="248.0" text="Identifiant du commercial" />
+          <TableColumn fx:id="clSalesRepLastName" prefWidth="246.0" text="Nom de famille du commercial" />
+            <TableColumn fx:id="clNumberVisits" prefWidth="272.0" text="Nombre de visites effectuées" />
         </columns>
       </TableView>
    </children>

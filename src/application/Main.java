@@ -2,12 +2,13 @@ package application;
 
 import java.io.IOException;
 
-import view.AddCustomerController;
-import view.EditCustomerController;
-import view.HomePageController;
-import view.LoginController;
-import view.SearchPageController;
-import view.TradeVisitController;
+import controller.AddCustomerController;
+import controller.AjoutVisiteController;
+import controller.EditCustomerController;
+import controller.HomePageController;
+import controller.LoginController;
+import controller.SearchPageController;
+import controller.TradeVisitController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,14 +17,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import model.Customer;
+import model.Client;
 
 public class Main extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 
-	//----------------------------------------------------------------------------------------------------------------------------------------------------    
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -34,7 +35,7 @@ public class Main extends Application {
 		showLogin();
 	}
 
-	//--------------------------------------------------------------------------------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------------------------------------------------------------------------------
 	public void initRootLayout() {
 		try {
 			// Load root layout from fxml file.
@@ -51,7 +52,7 @@ public class Main extends Application {
 		}
 	}
 
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	public void showLogin() {
 		try {
@@ -60,7 +61,7 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("/view/LoginView.fxml"));
 			AnchorPane accueil = (AnchorPane) loader.load();
 
-			//Met la fenêtre d'accueil au centre du root layout
+			// Met la fenêtre d'accueil au centre du root layout
 			rootLayout.setCenter(accueil);
 
 			//
@@ -68,178 +69,192 @@ public class Main extends Application {
 
 			controller.setMainApp(this);
 
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	public void showHomePage(){
-		 try{
-			  FXMLLoader loader= new FXMLLoader();
-	  		  
-	  		loader.setLocation(Main.class.getResource("/View/HomePageView.fxml"));
-	          AnchorPane page = (AnchorPane) loader.load();
-	          
-	       // Create the dialog Stage.
-	          rootLayout.setCenter(page);
 
-	          // Set the person into the controller.
-	          HomePageController controller = loader.getController();
-	          
-	         
-	       
-	          controller.setMainApp(this);
-	          controller.displayCustList();
-	          controller.initialize();
-	         
+	// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	public void showHomePage(Integer idCommercial) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
 
+			loader.setLocation(Main.class.getResource("/View/HomePageView.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
 
-	          
-	  		
-	  	}catch (IOException e){
-	  		
-	  		e.printStackTrace();
-	  		
-	  	}
+			// Crée le dialog stage
+			rootLayout.setCenter(page);
+
+			//load le controller concerné
+			HomePageController controller = loader.getController();
+
+			controller.setMainApp(this);
+			//on lance l'affichage des clients n'appartenant qu'au commercial concerné
+			controller.afficherListeClients(idCommercial);
+			//on initialise le menu
+			controller.initialize();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
 	}
-	
-	
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	public void EditCustomer(Customer cust){
-		try{
-	 		FXMLLoader loader= new FXMLLoader();
-	 		
-	 		loader.setLocation(Main.class.getResource("/view/EditCustomerView.fxml"));
-	         AnchorPane page = (AnchorPane) loader.load();
-	         
-	     
-	         Stage dialogStage = new Stage();
-	         dialogStage.setTitle("Edit customer");
-	         dialogStage.initModality(Modality.WINDOW_MODAL);
-	         dialogStage.initOwner(primaryStage);
-	         Scene scene = new Scene(page);
-	         dialogStage.setScene(scene);
 
-	        
-	         EditCustomerController controller = loader.getController();
-	         controller.setDialogStage(dialogStage);
-	         controller.setCustomer(cust);
-	        
-	         dialogStage.showAndWait();
-	 		
-	 	}catch (IOException e){
-	 		
-	 		e.printStackTrace();
-	 		
-	 	}
+	// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	public void EditCustomer(Client cust) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+
+			loader.setLocation(Main.class.getResource("/view/EditCustomerView.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit customer");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			EditCustomerController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setCustomer(cust);
+
+			dialogStage.showAndWait();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
 	}
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	public void showAddCustomer(){
-		 try{
-			  FXMLLoader loader= new FXMLLoader();
-	  		  
-	  		loader.setLocation(Main.class.getResource("/View/AddCustomerView.fxml"));
-	          AnchorPane page = (AnchorPane) loader.load();
-	          
-	          Stage dialogStage = new Stage();
-		         dialogStage.setTitle("Edit customer");
-		         dialogStage.initModality(Modality.WINDOW_MODAL);
-		         dialogStage.initOwner(primaryStage);
-		         Scene scene = new Scene(page);
-		         dialogStage.setScene(scene);
 
-		        
-		         AddCustomerController controller = loader.getController();
-		         controller.setDialogStage(dialogStage);
-		        
-		        
-		         dialogStage.showAndWait();
-	         
+	// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	public void showAddCustomer() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
 
+			loader.setLocation(Main.class.getResource("/View/AddCustomerView.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
 
-	          
-	  		
-	  	}catch (IOException e){
-	  		
-	  		e.printStackTrace();
-	  		
-	  	}
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit customer");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			AddCustomerController controller = loader.getController();
+			
+			controller.setDialogStage(dialogStage);
+			controller.initialiseComboBox();
+			dialogStage.showAndWait();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+	}
+
+	// -----------------------------------------------------------------------------------------------------
+	
+
+	public void showSearchCustomer() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+
+			loader.setLocation(Main.class.getResource("/View/SearchPageView.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit customer");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			SearchPageController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			
+			controller.RemplitChoixNumCpte();
+			controller.initialize();
+
+			dialogStage.showAndWait();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+	}
+
+	// -----------------------------------------------------------------------------------------------------------------
+	public void showTradeVisitsAnalysis() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+
+			loader.setLocation(Main.class.getResource("/View/TradeVisitView.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit customer");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			TradeVisitController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.implementComboBox();
+			controller.initialize();
+
+			dialogStage.showAndWait();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+	}
+
+	// ------------------------------------------------------------------------------------
+	public void showAjouterVisite() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+
+			loader.setLocation(Main.class.getResource("/View/AjoutVisiteView.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter une visite");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			AjoutVisiteController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.afficherVisites();
+
+			dialogStage.showAndWait();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
 	}
 	
-	//-----------------------------------------------------------------------------------------------------
-	public void showSearchCustomer(){
-		 try{
-			  FXMLLoader loader= new FXMLLoader();
-	  		  
-	  		loader.setLocation(Main.class.getResource("/View/SearchPageView.fxml"));
-	          AnchorPane page = (AnchorPane) loader.load();
-	          
-	          Stage dialogStage = new Stage();
-		         dialogStage.setTitle("Edit customer");
-		         dialogStage.initModality(Modality.WINDOW_MODAL);
-		         dialogStage.initOwner(primaryStage);
-		         Scene scene = new Scene(page);
-		         dialogStage.setScene(scene);
-
-		        
-		         SearchPageController controller = loader.getController();
-		         controller.setDialogStage(dialogStage);
-		         controller.RemplitChoixNumCpte();
-		         controller.initialize();
-		        
-		        
-		         dialogStage.showAndWait();
-	         
 
 
-	          
-	  		
-	  	}catch (IOException e){
-	  		
-	  		e.printStackTrace();
-	  		
-	  	}
-	}
-	
-	//-----------------------------------------------------------------------------------------------------------------
-	public void showTradeVisitsAnalysis(){
-		 try{
-			  FXMLLoader loader= new FXMLLoader();
-	  		  
-	  		loader.setLocation(Main.class.getResource("/View/TradeVisitView.fxml"));
-	          AnchorPane page = (AnchorPane) loader.load();
-	          
-	          Stage dialogStage = new Stage();
-		         dialogStage.setTitle("Edit customer");
-		         dialogStage.initModality(Modality.WINDOW_MODAL);
-		         dialogStage.initOwner(primaryStage);
-		         Scene scene = new Scene(page);
-		         dialogStage.setScene(scene);
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-		        
-		         TradeVisitController controller = loader.getController();
-		         controller.setDialogStage(dialogStage);
-		         controller.implementComboBox();
-		         controller.initialize();
-		        
-		        
-		         dialogStage.showAndWait();
-	         
-
-
-	          
-	  		
-	  	}catch (IOException e){
-	  		
-	  		e.printStackTrace();
-	  		
-	  	}
-	}
-	
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <ImageView fitHeight="540.0" fitWidth="966.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -18,22 +18,22 @@
       </ImageView>
       <AnchorPane layoutX="625.0" layoutY="50.0" opacity="0.58" prefHeight="416.0" prefWidth="305.0" style="-fx-background-color: ffff;">
          <children>
-            <Label layoutX="114.0" layoutY="26.0" text="Sign in">
+            <Label layoutX="81.0" layoutY="28.0" text="Se connecter">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="tfLogin" focusColor="#fedd00" labelFloat="true" layoutX="37.0" layoutY="115.0" prefHeight="25.0" prefWidth="232.0" promptText="Username">
+            <JFXTextField fx:id="tfLogin" focusColor="#fedd00" labelFloat="true" layoutX="37.0" layoutY="115.0" prefHeight="25.0" prefWidth="232.0" promptText="Nom d'utilisateur">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField fx:id="tfPassword" focusColor="#fedd00" labelFloat="true" layoutX="37.0" layoutY="166.0" prefHeight="25.0" prefWidth="232.0" promptText="Password">
+            <JFXPasswordField fx:id="tfPassword" focusColor="#fedd00" labelFloat="true" layoutX="37.0" layoutY="166.0" prefHeight="25.0" prefWidth="232.0" promptText="Mot de passe">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXPasswordField>
-            <JFXButton fx:id="btLogin" buttonType="RAISED" defaultButton="true" layoutX="37.0" layoutY="258.0" onAction="#handleConnexionOk" prefHeight="25.0" prefWidth="232.0" ripplerFill="#ae2253" style="-fx-background-color: #595959;" text="Log in" textFill="#fffefe" wrapText="true">
+            <JFXButton fx:id="btLogin" buttonType="RAISED" defaultButton="true" layoutX="37.0" layoutY="258.0" onAction="#handleConnexionOk" prefHeight="25.0" prefWidth="232.0" ripplerFill="#ae2253" style="-fx-background-color: #595959;" text="Se connecter" textFill="#fffefe" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>

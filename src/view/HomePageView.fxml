@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,62 +12,62 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: ;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HomePageController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: ;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
    <children>
       <JFXHamburger fx:id="hbMenu" layoutX="886.0" layoutY="14.0" />
       <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" prefHeight="540.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" />
-      <TableView fx:id="tbCust" layoutX="200.0" prefHeight="540.0" prefWidth="249.0" stylesheets="@Style.css">
+      <TableView fx:id="tbClient" layoutX="200.0" prefHeight="540.0" prefWidth="251.0">
         <columns>
-          <TableColumn fx:id="clIdCust" prefWidth="75.0" text="ID Cust" />
-          <TableColumn fx:id="clFirstNameCust" prefWidth="96.0" styleClass="fx" text="First Name" />
-            <TableColumn fx:id="clLastNameCust" prefWidth="77.0" text="Last Name" />
+          <TableColumn fx:id="clPrenomClient" prefWidth="117.0" styleClass="fx" text="Prénom" />
+            <TableColumn fx:id="clNomClient" prefWidth="131.0" text="Nom" />
         </columns>
       </TableView>
-      <Label layoutX="466.0" layoutY="97.0" text="First Name" />
-      <Label fx:id="firstName" layoutX="564.0" layoutY="97.0" />
-      <Label layoutX="467.0" layoutY="123.0" text="Last Name" />
-      <Label fx:id="lastname" layoutX="564.0" layoutY="123.0" />
-      <Label layoutX="466.0" layoutY="151.0" text="Address" />
-      <Label fx:id="address" layoutX="564.0" layoutY="151.0" />
-      <Label layoutX="467.0" layoutY="177.0" text="Postal Code/ZIp" />
-      <Label fx:id="postalcode" layoutX="564.0" layoutY="177.0" />
-      <JFXButton buttonType="RAISED" layoutX="469.0" layoutY="404.0" onAction="#handleEditDialog" prefHeight="25.0" prefWidth="466.0" style="-fx-background-color: FEDD00;" text="Edit">
+      <JFXButton buttonType="RAISED" layoutX="469.0" layoutY="404.0" onAction="#handleEditDialog" prefHeight="25.0" prefWidth="466.0" style="-fx-background-color: FEDD00;" text="Modifier">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="469.0" layoutY="455.0" onAction="#handleDeleteCustom" prefHeight="25.0" prefWidth="466.0" style="-fx-background-color: FEDD00;" text="Delete">
+      <JFXButton fx:id="supprimerClient" buttonType="RAISED" layoutX="469.0" layoutY="455.0" onAction="#handleSupprimerClient" prefHeight="25.0" prefWidth="466.0" style="-fx-background-color: FEDD00;" text="Supprimer">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXCheckBox checkedColor="#363534" layoutX="470.0" layoutY="311.0" text="Current" />
-      <JFXCheckBox layoutX="566.0" layoutY="311.0" text="To follow up" />
-      <JFXCheckBox layoutX="681.0" layoutY="311.0" text="Customer account off" />
-      <Label layoutX="574.0" layoutY="24.0" text="ACCOUNT N°">
+      <Label layoutX="574.0" layoutY="24.0" text="COMPTE N°">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <Label fx:id="lbNumCpte" layoutX="751.0" layoutY="24.0">
+      <Label fx:id="numCpte" layoutX="751.0" layoutY="24.0">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <Label layoutX="761.0" layoutY="97.0" text="City" />
-      <Label layoutX="761.0" layoutY="123.0" text="Phone Number" />
-      <Label layoutX="761.0" layoutY="151.0" text="Email Address" />
-      <Label fx:id="city" layoutX="866.0" layoutY="97.0" />
-      <Label fx:id="phonenumber" layoutX="866.0" layoutY="123.0" />
-      <Label fx:id="email" layoutX="866.0" layoutY="151.0" />
-      <Separator layoutX="539.0" layoutY="80.0" prefHeight="5.0" prefWidth="408.0" />
-      <Separator layoutX="459.0" layoutY="221.0" prefHeight="5.0" prefWidth="490.0" />
-      <Separator layoutX="456.0" layoutY="81.0" orientation="VERTICAL" prefHeight="142.0" prefWidth="5.0" />
-      <Separator layoutX="946.0" layoutY="80.0" orientation="VERTICAL" prefHeight="142.0" prefWidth="5.0" />
-      <Label layoutX="461.0" layoutY="73.0" opacity="0.43" text="Basic information">
+      <Separator layoutX="550.0" layoutY="80.0" prefHeight="5.0" prefWidth="397.0" />
+      <Separator layoutX="459.0" layoutY="247.0" prefHeight="5.0" prefWidth="490.0" />
+      <Separator layoutX="456.0" layoutY="91.0" orientation="VERTICAL" prefHeight="157.0" prefWidth="6.0" />
+      <Separator layoutX="946.0" layoutY="80.0" orientation="VERTICAL" prefHeight="169.0" prefWidth="6.0" />
+      <Label layoutX="458.0" layoutY="73.0" opacity="0.43" text="Informations de base">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
       </Label>
+      <Separator layoutX="456.0" layoutY="378.0" prefHeight="15.0" prefWidth="490.0" />
+      <Separator layoutX="601.0" layoutY="264.0" prefHeight="5.0" prefWidth="345.0" />
+      <Separator layoutX="456.0" layoutY="267.0" orientation="VERTICAL" prefHeight="118.0" prefWidth="6.0" />
+      <Separator layoutX="943.0" layoutY="266.0" orientation="VERTICAL" prefHeight="118.0" prefWidth="6.0" />
+      <Label layoutX="463.0" layoutY="256.0" opacity="0.43" text="Informations complémentaires">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="informations" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="469.0" layoutY="325.0" prefHeight="40.0" prefWidth="417.0" promptText="Informations Supplémentaires" />
+      <JFXTextField fx:id="firstName" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="102.0" prefHeight="25.0" prefWidth="163.0" promptText="Prénom" />
+      <JFXTextField fx:id="lastName" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="138.0" prefHeight="25.0" prefWidth="163.0" promptText="Nom" />
+      <JFXTextField fx:id="address" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="177.0" prefHeight="25.0" prefWidth="163.0" promptText="Adresse" />
+      <JFXTextField fx:id="postalCode" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="213.0" prefHeight="25.0" prefWidth="163.0" promptText="Code Postal" />
+      <JFXTextField fx:id="city" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="761.0" layoutY="102.0" prefHeight="25.0" prefWidth="148.0" promptText="Ville" />
+      <JFXTextField fx:id="phoneNumber" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="761.0" layoutY="139.0" prefHeight="25.0" prefWidth="148.0" promptText="Numéro de téléphone" />
+      <JFXTextField fx:id="email" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="761.0" layoutY="177.0" prefHeight="25.0" prefWidth="148.0" promptText="Email" />
+      <JFXTextField fx:id="etatClient" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="281.0" prefHeight="25.0" prefWidth="163.0" promptText="Statut Client" />
    </children>
 </AnchorPane>

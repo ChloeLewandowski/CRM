@@ -6,29 +6,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Pictures/Saved%20Pictures/jpg/34.jpg" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btViewCust" prefHeight="59.0" prefWidth="200.0" text="Your customers">
+      <JFXButton fx:id="btViewCust" prefHeight="59.0" prefWidth="200.0" text="Mes clients">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btAddCust" onAction="#addCustomer" prefHeight="59.0" prefWidth="200.0" text="Add a customer">
+      <JFXButton fx:id="btAddCust" onAction="#addCustomer" prefHeight="59.0" prefWidth="200.0" text="Ajouter un client">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btSearch" onAction="#searchCustomer" prefHeight="59.0" prefWidth="200.0" text="Search ">
+      <JFXButton fx:id="btSearch" onAction="#searchCustomer" prefHeight="59.0" prefWidth="200.0" text="Rechercher">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btTradeVisit" onAction="#tradeVisitAnalysis" prefHeight="59.0" prefWidth="200.0" text="Trade Visit Analysis">
+      <JFXButton fx:id="btTradeVisit" onAction="#tradeVisitAnalysis" prefHeight="59.0" prefWidth="200.0" text="Suivi des visites ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btAjouterVisite" onAction="#ajouterVisite" prefHeight="59.0" prefWidth="200.0" text="Ajouter une visite">
          <font>
             <Font size="14.0" />
          </font>
