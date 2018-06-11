@@ -13,7 +13,7 @@
             <Image url="@../../../../../../Pictures/Saved%20Pictures/jpg/34.jpg" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btViewCust" prefHeight="59.0" prefWidth="200.0" text="Mes clients">
+      <JFXButton fx:id="btViewCust" onAction="#viewCust" prefHeight="59.0" prefWidth="200.0" text="Mes clients">
          <font>
             <Font size="14.0" />
          </font>

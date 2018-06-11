@@ -16,7 +16,9 @@ public class Client {
 	private StringProperty numeroTelClient;
 	private StringProperty emailClient;
 	private StringProperty informationsClient;
+	private IntegerProperty idZone;
 	private IntegerProperty idEtat;
+	private IntegerProperty idCommercial;
 
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -26,7 +28,7 @@ public class Client {
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------
 	public Client(IntegerProperty idClient, StringProperty prenomClient, StringProperty nomClient,
 			StringProperty adresseClient, StringProperty codePostalClient, StringProperty villeClient,
-			StringProperty numeroTelClient, StringProperty emailClient,StringProperty informationsClient, IntegerProperty idEtat) {
+			StringProperty numeroTelClient, StringProperty emailClient,StringProperty informationsClient, IntegerProperty idZone, IntegerProperty idEtat, IntegerProperty idCommercial) {
 
 		this.idClient = idClient;
 		this.prenomClient = prenomClient;
@@ -37,12 +39,14 @@ public class Client {
 		this.numeroTelClient = numeroTelClient;
 		this.emailClient = emailClient;
 		this.informationsClient = informationsClient;
+		this.idZone= idZone;
 		this.idEtat=idEtat;
+		this.idCommercial=idCommercial;
 	}
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	public Client(Integer idClient, String prenomClient, String nomClient, String adresseClient, String codePostalClient, String villeClient, String numeroTelClient, String emailClient, String informationsClient, Integer idEtat){
+	public Client(Integer idClient, String prenomClient, String nomClient, String adresseClient, String codePostalClient, String villeClient, String numeroTelClient, String emailClient, String informationsClient, Integer idZone, Integer idEtat, Integer idCommercial){
 
 		this.idClient = new SimpleIntegerProperty(idClient);
 		this.prenomClient =new SimpleStringProperty(prenomClient);
@@ -53,7 +57,9 @@ public class Client {
 		this.numeroTelClient = new SimpleStringProperty(numeroTelClient);
 		this.emailClient = new SimpleStringProperty(emailClient);
 		this.informationsClient= new SimpleStringProperty(informationsClient);
+		this.idZone= new SimpleIntegerProperty(idZone);
 		this.idEtat= new SimpleIntegerProperty(idEtat);
+		this.idCommercial= new SimpleIntegerProperty(idCommercial);
 
 	}
 
@@ -172,8 +178,23 @@ public class Client {
 	}
 	public void setInformationsClient(StringProperty informationsClient) {
 		this.informationsClient = informationsClient;
-	//-----------------------------------------------------------------------------------------------------------------------
 	}
+	//-----------------------------------------------------------------------------------------------------------------------
+	
+	
+	public IntegerProperty getIdZone() {
+		return idZone;
+	}
+	
+	public Integer idZone(){
+		return idZone.get();
+	}
+	public void setIdZone(IntegerProperty idZone) {
+		this.idZone = idZone;
+	}
+	
+	//-------------------------------------------------------------------------------------------
+	
 	public IntegerProperty getIdEtat(){
 		return idEtat;
 	}
@@ -191,8 +212,18 @@ public class Client {
 		
 		this.idEtat.set(idEtat);
 	}
+	
 
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+	
+	public IntegerProperty getIdCommercial() {
+		return idCommercial;
+	}
+	
+	public Integer idCommercial(){
+		return idCommercial.get();
+	}
+	public void setIdCommercial(IntegerProperty idCommercial) {
+		this.idCommercial = idCommercial;
+	}
 }

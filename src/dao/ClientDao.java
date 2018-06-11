@@ -40,9 +40,11 @@ public class ClientDao {
 				String phoneNumberCust=rs.getString("numeroTelClient");
 				String emailAddressCust=rs.getString("emailClient");
 				String infosClient=rs.getString("informationsClient");
+				Integer idZone=rs.getInt("idZone");
 				Integer idEtat = rs.getInt("idEtat");
+				
 
-				Client cust= new Client (idCust, firstNameCust, lastNameCust, addressCust, postalCodeCust, cityCust, phoneNumberCust, emailAddressCust, infosClient, idEtat);
+				Client cust= new Client (idCust, firstNameCust, lastNameCust, addressCust, postalCodeCust, cityCust, phoneNumberCust, emailAddressCust, infosClient,idZone, idEtat, idCommercial);
 
 
 			
@@ -92,14 +94,24 @@ public class ClientDao {
 		String phoneNumber= cust.numeroTelClient();
 		String email= cust.emailClient();
 		String city= cust.villeClient();
+		String informations= cust.informationsClient();
+		Integer idZone=cust.idZone();
+		Integer idCommercial= cust.idCommercial();
+		Integer idEtat= cust.idEtat();
 		try
 		{	
+			informations.replace("'", "''");
 			Statement st= laConnection.createStatement();
+			informations.replaceAll("'", "''");
+			System.out.println("UPDATE tb_client set prenomClient='"+firstName+"',"
+					+ "nomClient='"+lastName+"',adresseClient='"+address+"',codePostalClient='"+postalCode+"',villeClient='"+city+"',numeroTelClient='"+phoneNumber+"',emailClient='"+email+"', informationsClient='"+informations+"',"
+							+ "idZone='"+idZone+"', idCommercial="+idCommercial+", idEtat='"+idEtat+"'WHERE idClient="+idCust);
+		
 			st.executeUpdate("UPDATE tb_client set prenomClient='"+firstName+"',"
-					+ "nomClient='"+lastName+"',adresseClient='"+address+"',codePostalClient='"+postalCode+"',villeClient='"+city+"',numeroTelClient='"+phoneNumber+"',emailClient='"+email+"'WHERE idClient="+idCust);
+					+ "nomClient='"+lastName+"',adresseClient='"+address+"',codePostalClient='"+postalCode+"',villeClient='"+city+"',numeroTelClient='"+phoneNumber+"',emailClient='"+email+"', informationsClient='"+informations+"',"
+							+ "idZone='"+idZone+"', idCommercial='"+idCommercial+"', idEtat='"+idEtat+"'WHERE idClient="+idCust);
 
-			System.out.println("TEST -> UPDATE tb_client set prenomClient='"+firstName+"',"
-					+ "nomClient='"+lastName+"',adresseClient='"+address+"',codePostalClient='"+postalCode+"',villeClient='"+city+"',numeroTelClient='"+phoneNumber+"',emailClient='"+email+"'WHERE idClient='"+idCust+"'");
+			
 		}catch(SQLException e){
 
 			e.printStackTrace();
@@ -117,20 +129,22 @@ public class ClientDao {
 		try
 		{
 			Statement st= laConnection.createStatement();
-			Integer idCust=cust.idClient();
-			String firstNameCust=cust.prenomClient();
-			String lastNameCust=cust.nomClient();
-			String addressCust=cust.adresseClient();
-			String postalCodeCust=cust.codePostal();
-			String cityCust=cust.villeClient();
-			String phoneNumberCust=cust.numeroTelClient();
-			String emailCust=cust.emailClient();
+			String prenomCli=cust.prenomClient();
+			String nomCli=cust.nomClient();
+			String adresseCli=cust.adresseClient();
+			String codePostalCli=cust.codePostal();
+			String villeCli=cust.villeClient();
+			String numTelCli=cust.numeroTelClient();
+			String mailCli=cust.emailClient();
+			String informationsCli= cust.informationsClient();
+			Integer idZone= cust.idZone();
+			Integer idEtat=cust.idEtat();
+			Integer idCommercial= cust.idCommercial();
 
 
+			System.out.println("INSERT INTO tb_client (prenomClient, nomClient, adresseClient, codePostalClient, villeClient, numeroTelClient, emailClient, informationsClient, idZone, idEtat, idCommercial) values('"+prenomCli+"','"+nomCli+"','"+adresseCli+"','"+codePostalCli+"','"+villeCli+"','"+numTelCli+"','"+mailCli+"','"+informationsCli+"','"+idZone+"','"+idEtat+"','"+idCommercial+"')");
 
-			st.executeUpdate("INSERT INTO tb_client (firstNameCust, lastNameCust, addressCust, postalCodeCust, cityCust, phoneNumberCust, emailAddressCust) values('"+firstNameCust+"','"+lastNameCust+"','"+addressCust+"','"+postalCodeCust+"','"+cityCust+"','"+phoneNumberCust+"','"+emailCust+"')");
-			System.out.println("INSERT INTO tb_client values('"+idCust+"','"+firstNameCust+"','"+lastNameCust+"','"+addressCust+"','"+postalCodeCust+"','"+cityCust+"','"+phoneNumberCust+"','"+emailCust+"')");
-
+			st.executeUpdate("INSERT INTO tb_client (prenomClient, nomClient, adresseClient, codePostalClient, villeClient, numeroTelClient, emailClient, informationsClient, idZone, idEtat, idCommercial) values('"+prenomCli+"','"+nomCli+"','"+adresseCli+"','"+codePostalCli+"','"+villeCli+"','"+numTelCli+"','"+mailCli+"','"+informationsCli+"','"+idZone+"','"+idEtat+"','"+idCommercial+"')");
 		}catch(SQLException e){
 
 			e.printStackTrace();
@@ -187,7 +201,7 @@ public class ClientDao {
 
 				
 				Statement st= laConnection.createStatement();
-				System.out.println("SELECT * FROM tb_client where "+crit);
+				System.out.println("résultat du test en cours:SELECT * FROM tb_client where "+crit);
 				ResultSet rs= st.executeQuery("SELECT * FROM tb_client where "+crit);
 				
 				while (rs.next()){
@@ -201,9 +215,11 @@ public class ClientDao {
 					String phoneNumberCust=rs.getString("numeroTelClient");
 					String emailAddressCust=rs.getString("emailClient");
 					String informationsClient =rs.getString("informationsClient");
-					Integer idEtat = (Integer.getInteger(rs.getString("idEtat")));
+					Integer idEtat = rs.getInt("idEtat");
+					Integer idZone =rs.getInt("idZone");
+					Integer idCommercial =rs.getInt("idCommercial");
 					
-					Client cust= new Client(idCust, firstNameCust, lastNameCust, addressCust, postalCodeCust, cityCust, phoneNumberCust, emailAddressCust,informationsClient, idEtat);
+					Client cust= new Client(idCust, firstNameCust, lastNameCust, addressCust, postalCodeCust, cityCust, phoneNumberCust, emailAddressCust,informationsClient,idZone, idEtat, idCommercial);
 					listCust.add(cust);
 				
 				}

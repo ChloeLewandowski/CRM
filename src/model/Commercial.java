@@ -1,10 +1,13 @@
 package model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 
 import javafx.beans.property.FloatProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -12,20 +15,20 @@ import javafx.beans.property.StringProperty;
 public class Commercial {
 
 
-	private StringProperty idSalesRep;
+	private IntegerProperty idSalesRep;
 	private StringProperty lastNameSalesRep;
 	private StringProperty firstNameSalesRep;
 	private StringProperty addressSalesRep;
 	private StringProperty postalCodeSalesRep;
 	private StringProperty phoneNumberSalesRep;
 	private StringProperty emailAddressSalesRep;
-	private SimpleObjectProperty<LocalDate> birthdaySalesRep= new SimpleObjectProperty<LocalDate>();
-	private SimpleObjectProperty<LocalDate> effectiveDateSalesRep= new SimpleObjectProperty<LocalDate>();
-	private FloatProperty basicWageSalesRep;
+	private SimpleObjectProperty<Date> birthdaySalesRep= new SimpleObjectProperty<Date>();
+	private SimpleObjectProperty<Date> effectiveDateSalesRep= new SimpleObjectProperty<Date>();
+	private StringProperty loginCommercial;
 	private StringProperty passwd;
 
 
-	public Commercial(StringProperty idSalesRep,StringProperty lastNameSalesRep, StringProperty firstNameSalesRep, StringProperty addressSalesRep,StringProperty postalCodeSalesRep, StringProperty phoneNumberSalesRep, StringProperty emailAddressSalesRep, SimpleObjectProperty<LocalDate>birthdaySalesRep, SimpleObjectProperty<LocalDate>BirthdaySalesRep, FloatProperty basicWageSalesRep, StringProperty passwd){
+	public Commercial(IntegerProperty idSalesRep,StringProperty lastNameSalesRep, StringProperty firstNameSalesRep, StringProperty addressSalesRep,StringProperty postalCodeSalesRep, StringProperty phoneNumberSalesRep, StringProperty emailAddressSalesRep, SimpleObjectProperty<Date>birthdaySalesRep, SimpleObjectProperty<Date>BirthdaySalesRep, StringProperty loginCommercial, StringProperty passwd){
 
 		this.idSalesRep=idSalesRep;
 		this.lastNameSalesRep=lastNameSalesRep;
@@ -36,41 +39,41 @@ public class Commercial {
 		this.emailAddressSalesRep=emailAddressSalesRep;
 		this.birthdaySalesRep=birthdaySalesRep;
 		this.effectiveDateSalesRep=effectiveDateSalesRep;
-		this.basicWageSalesRep=basicWageSalesRep;
+		this.loginCommercial=loginCommercial;
 		this.passwd=passwd;			
 
 	}
 	
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	public Commercial(String idSalesRep, String lastNameSalesRep, String firstNameSalesRep, String addressSalesRep, String postalCodeSalesRep, String phoneNumberSalesRep, String emailAddressSalesRep, LocalDate birthdaySalesRep, LocalDate BirthdaySalesRep,LocalDate effectiveDateSalesRep, Float basicWageSalesRep, String passwd ){
+	public Commercial(Integer idSalesRep, String lastNameSalesRep, String firstNameSalesRep, String addressSalesRep, String postalCodeSalesRep, String phoneNumberSalesRep, String emailAddressSalesRep, Date birthdaySalesRep, Date effectiveDateSalesRep, String loginCommercial, String passwd ){
 
-	this.idSalesRep= new SimpleStringProperty(idSalesRep);
+	this.idSalesRep= new SimpleIntegerProperty(idSalesRep);
 	this.lastNameSalesRep= new SimpleStringProperty(lastNameSalesRep);
 	this.firstNameSalesRep= new SimpleStringProperty(firstNameSalesRep);
 	this.addressSalesRep= new SimpleStringProperty(addressSalesRep);
 	this.postalCodeSalesRep= new SimpleStringProperty(postalCodeSalesRep);
 	this.phoneNumberSalesRep= new SimpleStringProperty(phoneNumberSalesRep);
 	this.emailAddressSalesRep= new SimpleStringProperty(emailAddressSalesRep);
-	this.birthdaySalesRep=new SimpleObjectProperty<LocalDate>(birthdaySalesRep);
-	this.effectiveDateSalesRep=new SimpleObjectProperty<LocalDate>(effectiveDateSalesRep);
-	this.basicWageSalesRep= new SimpleFloatProperty(basicWageSalesRep);
+	this.birthdaySalesRep=new SimpleObjectProperty<Date>(birthdaySalesRep);
+	this.effectiveDateSalesRep=new SimpleObjectProperty<Date>(effectiveDateSalesRep);
+	this.loginCommercial= new SimpleStringProperty(loginCommercial);
 	this.passwd= new SimpleStringProperty(passwd);
 		
 	}
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	public StringProperty getIdSalesRep() {
+	public IntegerProperty getIdSalesRep() {
 		return idSalesRep;
 	}
 	
-	public String IdSalesRep(){
+	public Integer IdSalesRep(){
 		
 		return idSalesRep.get();
 	}
 
-	public void setIdSalesRep(StringProperty idSalesRep) {
+	public void setIdSalesRep(IntegerProperty idSalesRep) {
 		this.idSalesRep = idSalesRep;
 	}
 	
@@ -148,28 +151,28 @@ public class Commercial {
 		this.emailAddressSalesRep = emailAddressSalesRep;
 	}
 
-	public SimpleObjectProperty<LocalDate> getBirthdaySalesRep() {
+	public SimpleObjectProperty<Date> getBirthdaySalesRep() {
 		return birthdaySalesRep;
 	}
 
-	public void setBirthdaySalesRep(SimpleObjectProperty<LocalDate> birthdaySalesRep) {
+	public void setBirthdaySalesRep(SimpleObjectProperty<Date> birthdaySalesRep) {
 		this.birthdaySalesRep = birthdaySalesRep;
 	}
 
-	public SimpleObjectProperty<LocalDate> getEffectiveDateSalesRep() {
+	public SimpleObjectProperty<Date> getEffectiveDateSalesRep() {
 		return effectiveDateSalesRep;
 	}
 
-	public void setEffectiveDateSalesRep(SimpleObjectProperty<LocalDate> effectiveDateSalesRep) {
+	public void setEffectiveDateSalesRep(SimpleObjectProperty<Date> effectiveDateSalesRep) {
 		this.effectiveDateSalesRep = effectiveDateSalesRep;
 	}
 
-	public FloatProperty getBasicWageSalesRep() {
-		return basicWageSalesRep;
+	public StringProperty getBasicWageSalesRep() {
+		return loginCommercial;
 	}
 
-	public void setBasicWageSalesRep(FloatProperty basicWageSalesRep) {
-		this.basicWageSalesRep = basicWageSalesRep;
+	public void setBasicWageSalesRep(StringProperty loginCommercial) {
+		this.loginCommercial = loginCommercial;
 	}
 
 	public StringProperty getPasswd() {

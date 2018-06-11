@@ -84,6 +84,9 @@ public class SearchPageController {
 	@FXML
 	private JFXButton btSearch;
 	
+	@FXML
+	private JFXButton btCancel;
+	
 	Main main;
 
 	// ----------------------------------------------------------------------------------------------------
@@ -137,7 +140,7 @@ public class SearchPageController {
 				drawer.open();
 		});
 	}
-	
+//-------------------------------------------------------------------------------------------------------	
 	
 	public void searchCustomer(){
 		ClientDao custDao= new ClientDao();
@@ -153,7 +156,7 @@ public class SearchPageController {
 
 			System.out.println("jsuis al");	
 			String firstName=ztFirstName.getText();
-			crit="firstNameCust='"+firstName+"'";
+			crit="prenomClient='"+firstName+"'";
 		}
 
 		if (!(cbId.getValue()==null)){
@@ -162,10 +165,10 @@ public class SearchPageController {
 
 			if (crit.equals("")){
 
-				crit="idCust='"+idCust+"'";
+				crit="idClient='"+idCust+"'";
 			}else{
 
-				crit=crit+"and idCust='"+idCust+"'";
+				crit=crit+"and idClient='"+idCust+"'";
 			}		
 
 		}
@@ -178,10 +181,10 @@ public class SearchPageController {
 
 			if (crit.equals("")){
 
-				crit="postalCodeCust='"+postalCode+"'";
+				crit="codePostalClient='"+postalCode+"'";
 			}else{
 
-				crit=crit+"and postalCodeCust='"+postalCode+"'";
+				crit=crit+"and codePostalClient='"+postalCode+"'";
 			}		
 		}
 
@@ -191,10 +194,10 @@ public class SearchPageController {
 
 			if (crit.equals("")){
 
-				crit="lastNameCust='"+lastName+"'";
+				crit="nomClient='"+lastName+"'";
 			}else{
 
-				crit=crit+"and lastNameCust='"+lastName+"'";
+				crit=crit+"and nomClient='"+lastName+"'";
 
 			}
 
@@ -204,13 +207,13 @@ public class SearchPageController {
 		System.out.println(crit);
 		listCust=custDao.renvoyerCpte(crit);
 
-		String numCpte=listCust.get(0).idCust();
+		//String numCpte=listCust.get(0).idClient();
 
 		//permet la conversion d'une arraylist en observablelist utilisée en javafx
 		ObservableList<Client> data= FXCollections.observableArrayList(listCust);
 
 		tbCust.setItems(data);
-		clId.setCellValueFactory(cellData -> cellData.getValue().getIdClient());
+		clId.setCellValueFactory(cellData -> cellData.getValue().getIdClient().asString());
 		clFirstName.setCellValueFactory(cellData-> cellData.getValue().getPrenomClient());
 		clLastName.setCellValueFactory(cellData-> cellData.getValue().getNomClient());
 		clAddress.setCellValueFactory(cellData -> cellData.getValue().getAdresseClient());
@@ -219,10 +222,16 @@ public class SearchPageController {
 		clPhoneNumber.setCellValueFactory(cellData -> cellData.getValue().getNumeroTelClient());
 		clEmailAddress.setCellValueFactory(cellData -> cellData.getValue().getEmailClient());
 
-		//clNomProprio.setCellValueFactory(cellData -> cellData.getValue().);
-
+		
 	}
 
 //---------------------------------------------------------------------------------------------------------
-
+	public void nettoyerSaisie(){
+		tbCust.setItems(null);
+		ztFirstName.setText("");
+		ztLastName.setText("");
+		ztPostalCode.setText("");
+		cbId.setValue("");
+		
+	}
 }

@@ -32,7 +32,7 @@ public class EtatClientDao {
 
 	}
 	
-	public ArrayList<String> retournerLibelleEtat(){
+	public ArrayList<String> renvoyerLibelleEtat(){
 		
 		ArrayList<String>listeEtat= new ArrayList<String>();
 		

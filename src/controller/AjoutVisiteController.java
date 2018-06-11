@@ -67,7 +67,7 @@ public class AjoutVisiteController {
 	    private JFXComboBox<Client> clientVisite;
 
 	    @FXML
-	    private ComboBox commercial;
+	    private JFXComboBox <String> commercialVisite;
 
 	    @FXML
 	    private JFXDrawer drawer;
@@ -126,10 +126,11 @@ public class AjoutVisiteController {
 	    
 	    public void afficherDetailsVisite(Visite newValue){
 	    	ClientDao clidao= new ClientDao();
-	    	ObservableList<Client> data= FXCollections.observableArrayList(clidao.returnCustList());
+	    	//ObservableList<Client> data= FXCollections.observableArrayList(clidao.returnCustList());
 	    	String nom=cdao.renvoyerNomCommercial(newValue.idCommercial());
 	    	System.out.println("test"+nom);
-//	    	commercial.getItems().add(cdao.renvoyerNomCommercial(newValue.getIdVisit()));
+	    	commercialVisite.getItems().addAll(cdao.renvoyerListeNoms());
+	    	commercialVisite.setValue(cdao.renvoyerNomCommercial(newValue.idCommercial()));
 	    	
 	    	butVisite.setText(newValue.getPurposeVisit());
 	    	infoVisite.setText(newValue.getInfoVisit());

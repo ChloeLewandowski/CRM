@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: ;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterClientController">
+   <children>
+      <JFXHamburger fx:id="hbMenu" layoutX="886.0" layoutY="14.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" prefHeight="540.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" />
+      <JFXButton fx:id="btAdd" buttonType="RAISED" layoutX="322.0" layoutY="412.0" onAction="#AddToDbCust" prefHeight="25.0" prefWidth="466.0" style="-fx-background-color: FEDD00;" text="Ajouter">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btCancel" buttonType="RAISED" layoutX="322.0" layoutY="469.0" onAction="#refreshFields" prefHeight="25.0" prefWidth="466.0" style="-fx-background-color: FEDD00;" text="Annuler la saisie">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="453.0" layoutY="24.0" text="Ajouter un client">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="prenom" focusColor="#fedd00" labelFloat="true" layoutX="280.0" layoutY="132.0" prefHeight="25.0" prefWidth="251.0" promptText="Prénom" />
+      <JFXTextField fx:id="nom" focusColor="#fedd00" labelFloat="true" layoutX="282.0" layoutY="174.0" prefHeight="25.0" prefWidth="251.0" promptText="Nom de famille" />
+      <JFXTextField fx:id="adresse" focusColor="#fedd00" labelFloat="true" layoutX="282.0" layoutY="217.0" prefHeight="25.0" prefWidth="251.0" promptText="Adresse" />
+      <JFXTextField fx:id="codePostal" focusColor="#fedd00" labelFloat="true" layoutX="636.0" layoutY="132.0" prefHeight="25.0" prefWidth="232.0" promptText="Code Postal" />
+      <JFXTextField fx:id="ville" focusColor="#fedd00" labelFloat="true" layoutX="636.0" layoutY="174.0" prefHeight="25.0" prefWidth="232.0" promptText="Ville" />
+      <JFXTextField fx:id="numTel" focusColor="#fedd00" labelFloat="true" layoutX="636.0" layoutY="217.0" prefHeight="25.0" prefWidth="232.0" promptText="Numéro de téléphone" />
+      <JFXTextField fx:id="adresseMail" focusColor="#fedd00" labelFloat="true" layoutX="636.0" layoutY="258.0" prefHeight="25.0" prefWidth="232.0" promptText="Adresse mail" />
+      <JFXComboBox fx:id="etatClient" focusColor="#fedd00" labelFloat="true" layoutX="282.0" layoutY="258.0" prefHeight="25.0" prefWidth="251.0" promptText="Statut Client" />
+      <JFXTextArea fx:id="informations" focusColor="#fedd00" labelFloat="true" layoutX="282.0" layoutY="296.0" prefHeight="67.0" prefWidth="586.0" promptText="Informations supplémentaires" />
+      <JFXComboBox fx:id="commercialResp" editable="true" focusColor="#fedd00" labelFloat="true" layoutX="280.0" layoutY="94.0" prefHeight="25.0" prefWidth="251.0" promptText="Commercial assigné" />
+      <JFXComboBox fx:id="zoneClient" editable="true" focusColor="#fedd00" labelFloat="true" layoutX="636.0" layoutY="94.0" prefHeight="25.0" prefWidth="232.0" promptText="Zone Géographique" />
+   </children>
+</AnchorPane>

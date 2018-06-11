@@ -24,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Analysis;
-import model.Customer;
+import model.Client;;
 
 public class TradeVisitController {
 
@@ -70,7 +70,7 @@ public class TradeVisitController {
 		//        rootP = root;
 
 		try {
-			VBox box = FXMLLoader.load(getClass().getResource("../view/	MenuView.fxml"));
+			VBox box = FXMLLoader.load(getClass().getResource("../view/MenuView.fxml"));
 			drawer.setSidePane(box);
 			drawer.open();
 		} catch (IOException ex) {
@@ -98,7 +98,7 @@ public class TradeVisitController {
 		
 		ObservableList <String> listArea= FXCollections.observableArrayList();
 		ZoneDao ardao= new ZoneDao();
-		listArea=ardao.returnAreaNames();
+		listArea=ardao.renvoyerNomZones();
 		cbArea.setItems(listArea);
 		
 	}

@@ -19,6 +19,7 @@ import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import application.Main;
 import dao.ClientDao;
 import dao.EtatClientDao;
+import dao.ZoneDao;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,6 +68,8 @@ public class HomePageController {
 	@FXML
 	private JFXTextField etatClient;
 	@FXML
+	private JFXTextField zone;
+	@FXML
 	private JFXButton btDelete;
 	@FXML
 	private JFXButton btAdd;
@@ -84,6 +87,7 @@ public class HomePageController {
 	private Label numCpte;
 
 	EtatClientDao etdao = new EtatClientDao();
+	ZoneDao zdao= new ZoneDao();
 
 	public static AnchorPane rootP;
 	// --------------------------------------------------------------------------------------------------
@@ -92,6 +96,8 @@ public class HomePageController {
 		this.main = main;
 
 	}
+	
+	
 
 	// --------------------------------------------------------------------------------------------------
 
@@ -130,6 +136,7 @@ public class HomePageController {
 		numCpte.setText(newValue.idClient().toString());
 		etatClient.setText(etdao.afficherLibelleEtat(newValue.idEtat()));
 		informations.setText(newValue.informationsClient());
+		zone.setText(zdao.renvoyerLibelle(newValue.idZone()));
 
 	}
 
@@ -193,38 +200,6 @@ public class HomePageController {
 
 	// ------------------------------------------------------------------------------------------------------------------------------------
 
-	public void handleDeleteCustom() {
-
-		ClientDao cdao = new ClientDao();
-		int selectedIndex = tbClient.getSelectionModel().getSelectedIndex();
-
-		if (selectedIndex >= 0) {
-
-			Client cust = tbClient.getItems().get(selectedIndex);
-			Integer idClient = cust.idClient();
-			cdao.supprimerClient(idClient);
-			tbClient.getItems().remove(selectedIndex);
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("The customer has been deleted");
-			alert.setHeaderText(null);
-			alert.setContentText("The chosen customer has been removed successfully");
-
-			alert.showAndWait();
-		}
-
-		// rien n'a été sélectionné, on le notifie à l'utilisateur
-		else {
-			Main main = new Main();
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.initOwner(main.getPrimaryStage());
-			alert.setTitle("No Customer selected");
-			alert.setHeaderText("None of the customers from the list have been selected");
-			alert.setContentText("Please first select a customer to remove");
-
-			alert.showAndWait();
-		}
-
-	}
 
 	// -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -239,9 +214,9 @@ public class HomePageController {
 			// Nothing selected.
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(main.getPrimaryStage());
-			alert.setTitle("No Selection");
-			alert.setHeaderText("No Customer Selected");
-			alert.setContentText("Please select a custmer in the table before editing.");
+			alert.setTitle("Pas de selection");
+			alert.setHeaderText("Aucun client n'a été préalablement sélectionné");
+			alert.setContentText("Sélectionner un client avant d'effectuer une modification");
 
 			alert.showAndWait();
 		}

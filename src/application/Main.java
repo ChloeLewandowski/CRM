@@ -2,9 +2,9 @@ package application;
 
 import java.io.IOException;
 
-import controller.AddCustomerController;
+import controller.AjouterClientController;
 import controller.AjoutVisiteController;
-import controller.EditCustomerController;
+import controller.ModifierClientController;
 import controller.HomePageController;
 import controller.LoginController;
 import controller.SearchPageController;
@@ -116,8 +116,10 @@ public class Main extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			EditCustomerController controller = loader.getController();
+			ModifierClientController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
+			
+			//remplit les champs de la fenêtre avec le client passé en paramètre
 			controller.setCustomer(cust);
 
 			dialogStage.showAndWait();
@@ -135,11 +137,11 @@ public class Main extends Application {
 	}
 
 	// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	public void showAddCustomer() {
+	public void showAjoutClient() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 
-			loader.setLocation(Main.class.getResource("/View/AddCustomerView.fxml"));
+			loader.setLocation(Main.class.getResource("/View/AjouterClientView.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 
 			Stage dialogStage = new Stage();
@@ -149,7 +151,7 @@ public class Main extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			AddCustomerController controller = loader.getController();
+			AjouterClientController controller = loader.getController();
 			
 			controller.setDialogStage(dialogStage);
 			controller.initialiseComboBox();

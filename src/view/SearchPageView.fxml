@@ -15,32 +15,29 @@
    <children>
       <JFXHamburger fx:id="hbMenu" layoutX="886.0" layoutY="14.0" />
       <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" prefHeight="540.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" />
-      <Label layoutX="424.0" layoutY="24.0" text="Search for a customer">
+      <Label layoutX="460.0" layoutY="24.0" text="Rechercher un client">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="ztFirstName" focusColor="#fedd00" layoutX="345.0" layoutY="119.0" />
-      <JFXTextField fx:id="ztLastName" focusColor="#fedd00" layoutX="717.0" layoutY="119.0" />
-      <JFXTextField fx:id="ztPostalCode" focusColor="#fedd00" layoutX="717.0" layoutY="165.0" />
-      <JFXComboBox fx:id="cbId" focusColor="#fedd00" layoutX="345.0" layoutY="165.0" />
-      <Label layoutX="279.0" layoutY="133.0" text="First Name" />
-      <Label layoutX="279.0" layoutY="176.0" text="ID" />
-      <Label layoutX="642.0" layoutY="133.0" text="Last Name" />
-      <Label layoutX="642.0" layoutY="176.0" text="Postal Code" />
+      <JFXTextField fx:id="ztFirstName" focusColor="#fedd00" labelFloat="true" layoutX="273.0" layoutY="119.0" prefHeight="25.0" prefWidth="207.0" promptText="Prénom" />
+      <JFXTextField fx:id="ztLastName" focusColor="#fedd00" labelFloat="true" layoutX="645.0" layoutY="119.0" prefHeight="25.0" prefWidth="207.0" promptText="Nom" />
+      <JFXTextField fx:id="ztPostalCode" focusColor="#fedd00" labelFloat="true" layoutX="645.0" layoutY="165.0" prefHeight="25.0" prefWidth="207.0" promptText="Code Postal" />
+      <JFXComboBox fx:id="cbId" focusColor="#fedd00" labelFloat="true" layoutX="274.0" layoutY="165.0" prefHeight="25.0" prefWidth="207.0" promptText="ID" />
+      <Label layoutX="642.0" layoutY="133.0" />
       <TableView fx:id="tbCust" layoutX="208.0" layoutY="277.0" prefHeight="267.0" prefWidth="755.0">
         <columns>
-          <TableColumn fx:id="clId" prefWidth="54.0" text="Id " />
-          <TableColumn fx:id="clFirstName" prefWidth="96.0" text="First Name" />
-            <TableColumn fx:id="clLastName" prefWidth="95.0" text="Last Name" />
-            <TableColumn fx:id="clAddress" prefWidth="93.0" text="Address" />
-            <TableColumn fx:id="clPostalCode" prefWidth="71.0" text="Postal Code" />
-            <TableColumn fx:id="clCity" prefWidth="101.0" text="City" />
-            <TableColumn fx:id="clPhoneNumber" prefWidth="98.0" text="Phone Number" />
-            <TableColumn fx:id="clEmailAddress" prefWidth="146.0" text="Email Address" />
+          <TableColumn fx:id="clId" prefWidth="54.0" text="Id" />
+          <TableColumn fx:id="clFirstName" prefWidth="96.0" text="Prénom" />
+            <TableColumn fx:id="clLastName" prefWidth="95.0" text="Nom" />
+            <TableColumn fx:id="clAddress" prefWidth="93.0" text="Adresse" />
+            <TableColumn fx:id="clPostalCode" prefWidth="71.0" text="CP" />
+            <TableColumn fx:id="clCity" prefWidth="101.0" text="Ville" />
+            <TableColumn fx:id="clPhoneNumber" prefWidth="98.0" text="N° Téléphone" />
+            <TableColumn fx:id="clEmailAddress" prefWidth="146.0" text="\@" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btSearch" buttonType="RAISED" layoutX="706.0" layoutY="228.0" onAction="#searchCustomer" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: FEDD00;" text="Search" />
-      <JFXButton buttonType="RAISED" layoutX="543.0" layoutY="228.0" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: FEDD00;" text="Remove" />
+      <JFXButton fx:id="btSearch" buttonType="RAISED" layoutX="706.0" layoutY="228.0" onAction="#searchCustomer" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: FEDD00;" text="Rechercher" />
+      <JFXButton fx:id="btCancel" buttonType="RAISED" layoutX="543.0" layoutY="228.0" onAction="#nettoyerSaisie" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: FEDD00;" text="Effacer la saisie" />
    </children>
 </AnchorPane>

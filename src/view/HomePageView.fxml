@@ -60,7 +60,7 @@
             <Font name="System Italic" size="10.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="informations" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="469.0" layoutY="325.0" prefHeight="40.0" prefWidth="417.0" promptText="Informations Supplémentaires" />
+      <JFXTextArea fx:id="informations" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="469.0" layoutY="325.0" prefHeight="40.0" prefWidth="458.0" promptText="Informations Supplémentaires" />
       <JFXTextField fx:id="firstName" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="102.0" prefHeight="25.0" prefWidth="163.0" promptText="Prénom" />
       <JFXTextField fx:id="lastName" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="138.0" prefHeight="25.0" prefWidth="163.0" promptText="Nom" />
       <JFXTextField fx:id="address" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="177.0" prefHeight="25.0" prefWidth="163.0" promptText="Adresse" />
@@ -69,5 +69,6 @@
       <JFXTextField fx:id="phoneNumber" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="761.0" layoutY="139.0" prefHeight="25.0" prefWidth="148.0" promptText="Numéro de téléphone" />
       <JFXTextField fx:id="email" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="761.0" layoutY="177.0" prefHeight="25.0" prefWidth="148.0" promptText="Email" />
       <JFXTextField fx:id="etatClient" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="470.0" layoutY="281.0" prefHeight="25.0" prefWidth="163.0" promptText="Statut Client" />
+      <JFXTextField fx:id="zone" editable="false" focusColor="#fedd00" labelFloat="true" layoutX="761.0" layoutY="281.0" prefHeight="25.0" prefWidth="163.0" promptText="Zone Géographique" />
    </children>
 </AnchorPane>

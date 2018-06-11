@@ -13,7 +13,7 @@ public class ZoneDao {
 	Connection laConnection=Dao.initConnection();
 	
 	
-	public ObservableList<String> returnAreaNames(){
+	public ObservableList<String> renvoyerNomZones(){
 
 		ObservableList<String> listArea= FXCollections.observableArrayList();
 
@@ -48,6 +48,49 @@ public class ZoneDao {
 
 
 		//---------------------------------------------------------------------------------------------------------------------------------------
+	public Integer retournerIdZone(String libelleZone){
+		Integer idZone=0;
 
+		try {
+			Statement st = laConnection.createStatement();
+			ResultSet rs = st.executeQuery("SELECT idZone FROM tb_Zone where nomZone='" + libelleZone + "'");
 
+			while (rs.next()) {
+
+				idZone = rs.getInt("idZone");
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return idZone;
+	}
+	
+	//----------------------------------------------------------------------------------------------------------------------
+	public String renvoyerLibelle(Integer idZone){
+		String libelleZone="";
+		try{
+			Statement st = laConnection.createStatement();
+			ResultSet rs = st.executeQuery("SELECT nomZone FROM tb_Zone where idZone='" + idZone + "'");
+			while (rs.next()) {
+
+				libelleZone = rs.getString("nomZone");
+
+			}
+		
+	} catch (SQLException e) {
+
+		e.printStackTrace();
+	}
+	
+	return libelleZone;
 }
+		
+		
+		
+	}
+
+
